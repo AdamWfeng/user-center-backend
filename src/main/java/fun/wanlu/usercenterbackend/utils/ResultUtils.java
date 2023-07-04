@@ -15,15 +15,13 @@ public class ResultUtils {
         return new BaseResponse<T>(0, data, "OK");
     }
 
-    public static BaseResponse<String> error(int code, String message, String description) {
+    /**
+     * 失败
+     */
+    public static <T> BaseResponse<T> error(int code, String message, String description) {
         return new BaseResponse<>(code, null, message, description);
     }
 
-    /**
-     * 失败
-     * @param errorCode
-     * @return
-     */
     public static BaseResponse<ErrorCode> error(ErrorCode errorCode) {
         return new BaseResponse<>(errorCode);
     }
@@ -35,5 +33,4 @@ public class ResultUtils {
     public static BaseResponse<String> error(ErrorCode errorCode, String description) {
         return new BaseResponse<>(errorCode.getCode(), errorCode.getMessage(), description);
     }
-
 }

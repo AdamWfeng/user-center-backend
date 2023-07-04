@@ -2,6 +2,7 @@ package fun.wanlu.usercenterbackend.service;
 
 import fun.wanlu.usercenterbackend.model.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import fun.wanlu.usercenterbackend.model.vo.UserVo;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,7 +20,7 @@ public interface UserService extends IService<User> {
      * @param checkPassword
      * @return
      */
-    long userRegister(String userAccount, String userPassword, String checkPassword);
+    Long userRegister(String userAccount, String userPassword, String checkPassword);
 
     /**
      * 用户登录
@@ -27,19 +28,19 @@ public interface UserService extends IService<User> {
      * @param userPassword
      * @return
      */
-    User userLogin(String userAccount, String userPassword, HttpServletRequest request);
+    UserVo userLogin(String userAccount, String userPassword, HttpServletRequest request);
+
+    /**
+     * 注销
+     * @return
+     */
+    Integer userLogout(HttpServletRequest httpServletRequest);
 
     /**
      * 脱敏
      * @param originUser
      * @return
      */
-    User getSafetyUser(User originUser);
-
-    /**
-     * 注销
-     * @return
-     */
-    int userLogout(HttpServletRequest httpServletRequest);
+    UserVo getSafetyUser(User originUser);
 
 }
